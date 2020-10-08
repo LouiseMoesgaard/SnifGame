@@ -7,5 +7,4 @@ const water = {
 
 function waterInit(){
     document.querySelector("#game").innerHTML = getSVG("water");
-
 }
