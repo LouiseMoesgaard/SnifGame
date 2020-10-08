@@ -7,5 +7,4 @@ const warmth = {
 
 function warmthInit(){
     document.querySelector("#game").innerHTML = getSVG("warmth");
-
 }

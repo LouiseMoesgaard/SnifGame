@@ -19,6 +19,7 @@ function mainInit(){
     document.querySelector("#power").addEventListener("click", powerInit);
     document.querySelector("#light").addEventListener("click", lightInit);
     document.querySelector("#warmth").addEventListener("click", warmthInit);
-
 }
+
+function 
 
