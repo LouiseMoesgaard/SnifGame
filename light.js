@@ -1,19 +1,19 @@
 
 "use strict";
 
-const light = {
-    items:["tableLamp", "floorLamp", "tent", "snif", "hunter"]
-}
+// const light = {
+//     items:["tableLamp", "floorLamp", "tent", "snif", "hunter"]
+// }
 
-// laves for alle items
-const tableLamp = {
-    x:
-    y: 
-    width:
-    height:
-    element:
-    direction:
-}
+// // laves for alle items
+// const tableLamp = {
+//     x:
+//     y: 
+//     width:
+//     height:
+//     element:
+//     direction:
+// }
 //her skal være globale objecter, der alle repræsentere en del af en scene, 
 //som skal animeres eller gøre noget
 
@@ -22,30 +22,30 @@ function lightInit(){
 
 }
 
-function lightGameplayController() {
-//
-}
+// function lightGameplayController() {
+// //
+// }
 
 
-function lightEvents() {
+// function lightEvents() {
 
-}
+// }
 
-function lightLoop(){
+// function lightLoop(){
     
-    // kalder lightprocessinput og lightWinConditions 
-    //brug en timer til at at tjekke input og om man har vundet 
+//     // kalder lightprocessinput og lightWinConditions 
+//     //brug en timer til at at tjekke input og om man har vundet 
 
-}
+// }
 
-function lightProcessInput(){
+// function lightProcessInput(){
 
-    //sætter animation igang alt efter hvad man trykket på. 
+//     //sætter animation igang alt efter hvad man trykket på. 
     
-}
+// }
 
-function lightWinCondition(){
+// function lightWinCondition(){
 
-    //if else der tjekker om man har vundet. ellers forsætter loop. 
+//     //if else der tjekker om man har vundet. ellers forsætter loop. 
     
-}
+// }
