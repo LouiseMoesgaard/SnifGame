@@ -1,11 +1,11 @@
 
 "use strict";
 
-const power = [
-    items: ["tv", "vacuum", "router", "snif", "hunter"]
-]
+// const power = [
+//     items: ["tv", "vacuum", "router", "snif", "hunter"]
+// ]
 
-function powerInit(){
-    document.querySelector("#game").innerHTML = getSVG("power");
+async function powerInit(){
+    document.querySelector("#game").innerHTML = await getSVG("power");
 
 }

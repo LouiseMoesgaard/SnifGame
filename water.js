@@ -1,11 +1,10 @@
 
 "use strict";
 
-const water = {
-    items: ["fossett", "dishwasher", "waterhose", "snif", "hunter"]
-}
+// const water = {
+//     items: ["fossett", "dishwasher", "waterhose", "snif", "hunter"]
+// }
 
-function waterInit(){
-    document.querySelector("#game").innerHTML = getSVG("water");
-
+async function waterInit(){
+    document.querySelector("#game").innerHTML = await getSVG("water");
 }
