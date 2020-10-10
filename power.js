@@ -5,7 +5,7 @@
 //     items: ["tv", "vacuum", "router", "snif", "hunter"]
 // ]
 
-function powerInit(){
-    document.querySelector("#game").innerHTML = getSVG("power");
+async function powerInit(){
+    document.querySelector("#game").innerHTML = await getSVG("power");
 
 }

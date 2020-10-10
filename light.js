@@ -17,8 +17,8 @@
 //her skal være globale objecter, der alle repræsentere en del af en scene, 
 //som skal animeres eller gøre noget
 
-function lightInit(){
-    document.querySelector("#game").innerHTML = getSVG("light"); //får det returnede SVG
+async function lightInit(){
+    document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
 
 }
 
