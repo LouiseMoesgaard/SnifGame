@@ -63,7 +63,6 @@ function renderModel(model){
         document.querySelector(model.lightElement).classList.remove("hide");
     } else{
         document.querySelector(model.lightElement).classList.add("hide");
-
     }
 
 }
