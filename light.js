@@ -3,11 +3,6 @@
 
 let points = 5;
 
-// const light = {
-//     items:["tableLamp", "floorLamp", "tent", "snif", "hunter"]
-// }
-
-//laves for alle items
 window.lamp = {
     element:"#lamp",
     lightElement: "#lampLight",
@@ -36,14 +31,11 @@ async function lightInit(){
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
     lightEvents();
     lightLoop();
-
-
 }
-
 
 function lightEvents() {
     document.querySelector(lamp.lightElement).addEventListener("click", ()=> inputs.lampLightClicked = true);
-    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> inputs.FloorLampLightClicked = true);
+    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> inputs.floorLampLightClicked = true);
     document.querySelector(tent.lightElement).addEventListener("click", ()=> inputs.tentLightClicked = true);
 }
 
@@ -66,7 +58,6 @@ function renderModel(model){
     }
 
 }
-
 
 // function lightWinCondition(){
 
