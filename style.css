@@ -1,0 +1,10 @@
+.hide{
+    visibility: hidden;
+}
+
+#game {
+    max-height: 100vh;
+    justify-content: center;
+    justify-self: center;
+}
+
