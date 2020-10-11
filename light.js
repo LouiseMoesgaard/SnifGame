@@ -1,48 +1,73 @@
 
 "use strict";
 
+let points = 5;
+
 // const light = {
 //     items:["tableLamp", "floorLamp", "tent", "snif", "hunter"]
 // }
 
-// // laves for alle items
-// const tableLamp = {
-//     x:
-//     y: 
-//     width:
-//     height:
-//     element:
-//     direction:
-// }
-//her skal være globale objecter, der alle repræsentere en del af en scene, 
-//som skal animeres eller gøre noget
+//laves for alle items
+window.lamp = {
+    element:"#lamp",
+    lightElement: "#lampLight",
+    lightOn: true
+}
+
+window.floorLamp = {
+    element:"#floorLamp",
+    lightElement: "#floorLampLight",
+    lightOn: true
+}
+
+window.tent = {
+    element: "#tent",
+    lightElement:"#tentLight",
+    lightOn: true
+}
+
+const inputs = {
+    lampLightClicked: false,
+    floorLampLightClicked: false,
+    tentLightClicked: false
+}
 
 async function lightInit(){
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
+    lightEvents();
+    lightLoop();
+
 
 }
 
-// function lightGameplayController() {
-// //
-// }
 
+function lightEvents() {
+    document.querySelector(lamp.lightElement).addEventListener("click", ()=> inputs.lampLightClicked = true);
+    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> inputs.FloorLampLightClicked = true);
+    document.querySelector(tent.lightElement).addEventListener("click", ()=> inputs.tentLightClicked = true);
+}
 
-// function lightEvents() {
+function lightLoop(){
+    Object.keys(inputs).forEach(key =>{
 
-// }
+        if(inputs[key]){
+            window[key.split("Light")[0]].lightOn = !inputs[key];
+            renderModel(window[key.split("Light")[0]]);
+        }    
+    })
+requestAnimationFrame(lightLoop);
+}
 
-// function lightLoop(){
-    
-//     // kalder lightprocessinput og lightWinConditions 
-//     //brug en timer til at at tjekke input og om man har vundet 
+function renderModel(model){
+    if(model.lightOn){
+        document.querySelector(model.lightElement).classList.remove("hide");
+    } else{
+        document.querySelector(model.lightElement).classList.add("hide");
 
-// }
+    }
 
-// function lightProcessInput(){
+}
 
-//     //sætter animation igang alt efter hvad man trykket på. 
-    
-// }
 
 // function lightWinCondition(){
 
