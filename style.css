@@ -1,5 +1,5 @@
-.hide{
-    visibility: hidden;
+.hide {
+   visibility: hidden;
 }
 
 #game {
@@ -8,3 +8,27 @@
     justify-self: center;
 }
 
+/* MEDALS STYLING */
+
+#medal_container {
+    display: flex;
+    position: absolute;
+    top: 2vw;
+    right: 2.5vw;
+}
+
+.full {
+    height: 9vw;
+    width: 9vw;
+    background-image: url(svgs/goldmedal-01.svg);
+    background-size: cover;
+    margin: 8px;
+}
+
+.gray {
+    height: 9vw;
+    width: 9vw;
+    background-image: url(svgs/goldmedal-02.svg);
+    background-size: cover;
+    margin: 8px;
+}
