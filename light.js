@@ -1,48 +1,63 @@
 
 "use strict";
 
-// const light = {
-//     items:["tableLamp", "floorLamp", "tent", "snif", "hunter"]
-// }
+let points = 5;
 
-// // laves for alle items
-// const tableLamp = {
-//     x:
-//     y: 
-//     width:
-//     height:
-//     element:
-//     direction:
-// }
-//her skal være globale objecter, der alle repræsentere en del af en scene, 
-//som skal animeres eller gøre noget
+window.lamp = {
+    element:"#lamp",
+    lightElement: "#lampLight",
+    lightOn: true
+}
+
+window.floorLamp = {
+    element:"#floorLamp",
+    lightElement: "#floorLampLight",
+    lightOn: true
+}
+
+window.tent = {
+    element: "#tent",
+    lightElement:"#tentLight",
+    lightOn: true
+}
+
+const inputs = {
+    lampLightClicked: false,
+    floorLampLightClicked: false,
+    tentLightClicked: false
+}
 
 async function lightInit(){
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
-
+    lightEvents();
+    lightLoop();
 }
 
-// function lightGameplayController() {
-// //
-// }
+function lightEvents() {
+    document.querySelector(lamp.lightElement).addEventListener("click", ()=> inputs.lampLightClicked = true);
+    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> inputs.floorLampLightClicked = true);
+    document.querySelector(tent.lightElement).addEventListener("click", ()=> inputs.tentLightClicked = true);
+}
 
+function lightLoop(){
+    Object.keys(inputs).forEach(key =>{
 
-// function lightEvents() {
+        if(inputs[key]){
+            window[key.split("Light")[0]].lightOn = !inputs[key];
+            renderModel(window[key.split("Light")[0]]);
+        }    
+    })
+requestAnimationFrame(lightLoop);
+}
 
-// }
+function renderModel(model){
+    if(model.lightOn){
+        document.querySelector(model.lightElement).classList.remove("hide");
+    } else{
+        document.querySelector(model.lightElement).classList.add("hide");
+    }
 
-// function lightLoop(){
-    
-//     // kalder lightprocessinput og lightWinConditions 
-//     //brug en timer til at at tjekke input og om man har vundet 
-
-// }
-
-// function lightProcessInput(){
-
-//     //sætter animation igang alt efter hvad man trykket på. 
-    
-// }
+}
 
 // function lightWinCondition(){
 
