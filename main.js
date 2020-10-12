@@ -1,10 +1,12 @@
 "use strict";
 
-let points; 
 
-let maxPoints = 3;
-
-let medal = 0;
+let game = {
+    points: 0,
+    maxPoints: 2,
+    medal:0,
+    complete:[]
+}
 
 document.addEventListener("DOMContentLoaded", mainInit);
 
@@ -18,9 +20,10 @@ async function mainInit(){
     await initialState(); 
 }
 
-async function winCondition(){
-    if(points === maxPoints){
-        medal++;  
+async function winCondition(house){
+    if(game.points === game.maxPoints){
+        game.medal++; 
+        game.complete.push(house); 
         await initialState();
         document.querySelectorAll(".gray")[0].className = "full";
     } 
@@ -28,6 +31,7 @@ async function winCondition(){
 
 async function initialState(){
     document.querySelector("#game").innerHTML =  await getSVG("main");
+
     document.querySelector("#main_water").addEventListener("click", waterInit); //#water er husnavn svg
     document.querySelector("#main_power").addEventListener("click", powerInit);
     document.querySelector("#main_light").addEventListener("click", lightInit);
@@ -37,9 +41,17 @@ async function initialState(){
     document.querySelector("#main_power_on").addEventListener("click", powerInit);
     document.querySelector("#main_light_on").addEventListener("click", lightInit);
     document.querySelector("#main_heat_on").addEventListener("click", heatInit);
-
+    
     //document.querySelector("#back").addEventListener("click", initialState);
+    game.complete.forEach(houseComplete);
 }
 
+
+function houseComplete(house){
+    document.querySelector(`#main_${house}_on`).classList.add("hide");   
+    
+    document.querySelector(`#main_${house}`).removeEventListener("click", window[`${house}Init`]);  
+    document.querySelector(`#main_${house}_on`).removeEventListener("click", window[`${house}Init`]);
+}
 
 

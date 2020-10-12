@@ -1,11 +1,4 @@
-
 "use strict";
-
-let points = 5;
-
-// const water = {
-//     items: ["fossett", "dishwasher", "waterhose", "snif", "hunter"]
-// }
 
 window.fossett = {
     element: "#fossett",
@@ -19,34 +12,37 @@ window.dishwasher = {
     waterOn: true
 }
 
-const inputs = {
+const waterInputs = {
     fossettWaterClicked: false,
     dishwasherWaterClicked: false
 }
 
 async function waterInit(){
+    game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("water");
     waterEvents();
     waterLoop();
 }
 
 function waterEvents() {
-    document.querySelector(fossett.element).addEventListener("click", ()=> inputs.fossettWaterClicked = true);
-    document.querySelector(dishwasher.element).addEventListener("click", ()=> inputs.dishwasherWaterClicked = true);
+    document.querySelector(fossett.element).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
+    document.querySelector(dishwasher.element).addEventListener("click", ()=> waterInputs.dishwasherWaterClicked = true);
 }
 
 function waterLoop(){
-    Object.keys(inputs).forEach(key =>{
-
-        if(inputs[key]){
-            window[key.split("Water")[0]].waterOn = !inputs[key];
-            renderModel(window[key.split("Water")[0]]);
+    Object.keys(waterInputs).forEach(key =>{
+        if(waterInputs[key]){
+            window[key.split("Water")[0]].waterOn = !waterInputs[key];
+            waterInputs[key] = false;
+            game.points++
+            waterRenderModel(window[key.split("Water")[0]]);
+            winCondition("water");
         }    
     })
 requestAnimationFrame(waterLoop);
 }
 
-function renderModel(model){
+function waterRenderModel(model){
     if(model.waterOn){
         document.querySelector(model.waterElement).classList.remove("hide");
     } else{
@@ -54,9 +50,3 @@ function renderModel(model){
     }
 
 }
-
-// function lightWinCondition(){
-
-//     //if else der tjekker om man har vundet. ellers forsætter loop. 
-    
-// }

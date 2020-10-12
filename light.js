@@ -19,40 +19,40 @@ window.tent = {
     lightOn: true
 }
 
-const inputs = {
+const lighInputs = {
     lampLightClicked: false,
     floorLampLightClicked: false,
     tentLightClicked: false
 }
 
 async function lightInit(){
-    points = 0;
+    game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
     lightEvents();
     lightLoop();
 }
 
 function lightEvents() {
-    document.querySelector(lamp.lightElement).addEventListener("click", ()=> inputs.lampLightClicked = true);
-    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> inputs.floorLampLightClicked = true);
-    document.querySelector(tent.lightElement).addEventListener("click", ()=> inputs.tentLightClicked = true);
+    document.querySelector(lamp.lightElement).addEventListener("click", ()=> lighInputs.lampLightClicked = true);
+    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> lighInputs.floorLampLightClicked = true);
+    document.querySelector(tent.lightElement).addEventListener("click", ()=> lighInputs.tentLightClicked = true);
 }
 
 function lightLoop(){
-    Object.keys(inputs).forEach(key =>{
+    Object.keys(lighInputs).forEach(key =>{
 
-        if(inputs[key]){
-            window[key.split("Light")[0]].lightOn = !inputs[key];
-            inputs[key] = false;
-            points++
-            renderModel(window[key.split("Light")[0]]);
-            winCondition();
+        if(lighInputs[key]){
+            window[key.split("Light")[0]].lightOn = !lighInputs[key];
+            lighInputs[key] = false;
+            game.points++
+            lightRenderModel(window[key.split("Light")[0]]);
+            winCondition("light");
         }    
     })
 requestAnimationFrame(lightLoop);
 }
 
-function renderModel(model){
+function lightRenderModel(model){
     if(model.lightOn){
         document.querySelector(model.lightElement).classList.remove("hide");
     } else{
