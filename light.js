@@ -1,8 +1,6 @@
 
 "use strict";
 
-let points = 5;
-
 window.lamp = {
     element:"#lamp",
     lightElement: "#lampLight",
@@ -28,6 +26,7 @@ const inputs = {
 }
 
 async function lightInit(){
+    points = 0;
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
     lightEvents();
     lightLoop();
@@ -44,7 +43,10 @@ function lightLoop(){
 
         if(inputs[key]){
             window[key.split("Light")[0]].lightOn = !inputs[key];
+            inputs[key] = false;
+            points++
             renderModel(window[key.split("Light")[0]]);
+            winCondition();
         }    
     })
 requestAnimationFrame(lightLoop);
@@ -58,9 +60,3 @@ function renderModel(model){
     }
 
 }
-
-// function lightWinCondition(){
-
-//     //if else der tjekker om man har vundet. ellers forsætter loop. 
-    
-// }

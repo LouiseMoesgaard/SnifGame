@@ -1,10 +1,10 @@
 "use strict";
 
-mainGameplayController();
+let points; 
 
-// const models = {
-//     items:["water", "power", "warmth", "light", "snif"]
-// }
+let maxPoints = 3;
+
+let medal = 0;
 
 document.addEventListener("DOMContentLoaded", mainInit);
 
@@ -15,8 +15,19 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
-    document.querySelector("#game").innerHTML =  await getSVG("main");
+    await initialState(); 
+}
 
+async function winCondition(){
+    if(points === maxPoints){
+        medal++;  
+        await initialState();
+        document.querySelectorAll(".gray")[0].className = "full";
+    } 
+}
+
+async function initialState(){
+    document.querySelector("#game").innerHTML =  await getSVG("main");
     document.querySelector("#main_water").addEventListener("click", waterInit); //#water er husnavn svg
     document.querySelector("#main_power").addEventListener("click", powerInit);
     document.querySelector("#main_light").addEventListener("click", lightInit);
@@ -26,14 +37,9 @@ async function mainInit(){
     document.querySelector("#main_power_on").addEventListener("click", powerInit);
     document.querySelector("#main_light_on").addEventListener("click", lightInit);
     document.querySelector("#main_heat_on").addEventListener("click", heatInit);
+
+    //document.querySelector("#back").addEventListener("click", initialState);
 }
 
-function mainGameplayController() {
-    screenOrientation();
-    }
-
-function screenOrientation() {
-    window.screen.orientation.lock("portrait");
-}
 
 
