@@ -7,5 +7,10 @@
 
 async function powerInit(){
     document.querySelector("#game").innerHTML = await getSVG("power");
+    addAnimations();
+}
 
+function addAnimations() {
+    console.log("lets shake it up!");
+ document.querySelector("#power_vacuum_off").classList.add("vibration");
 }
