@@ -55,5 +55,14 @@ function waterRenderModel(model){
         document.querySelector(model.waterElement).classList.remove("hide");
     } else{
         document.querySelector(model.waterElement).classList.add("hide");
+        hunterLoop(model);
     }
+}
+
+function hunterLoop(model) {
+    console.log("Hunter");
+    let elementTarget = document.querySelector(model.waterElement);
+    setTimeout(() => {
+        elementTarget.classList.remove("hide");
+    }, 2000);
 }
