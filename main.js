@@ -17,7 +17,10 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
-    await initialState(); 
+    document.querySelector("#game").innerHTML =  await getSVG("start_screen");
+    document.querySelector("#play_button").addEventListener("click", initialState); 
+
+    //await initialState(); 
 }
 
 async function winCondition(house){
