@@ -1,3 +1,7 @@
+body {
+    background-color: #e7ffd0;
+}
+
 .hide {
    visibility: hidden;
 }
@@ -22,16 +26,16 @@
 }
 
 .full {
-    height: 9vw;
-    width: 9vw;
+    height: 6vw;
+    width: 6vw;
     background-image: url(svgs/goldmedal-01.svg);
     background-size: cover;
     margin: 8px;
 }
 
 .gray {
-    height: 9vw;
-    width: 9vw;
+    height: 6vw;
+    width: 6vw;
     background-image: url(svgs/goldmedal-02.svg);
     background-size: cover;
     margin: 8px;
