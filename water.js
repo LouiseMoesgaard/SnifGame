@@ -12,9 +12,16 @@ window.dishwasher = {
     waterOn: true
 }
 
+window.waterhose = {
+    element: "#waterhoseWater",
+    waterElement: "#waterhoseWater",
+    waterOn: true
+}
+
 const waterInputs = {
     fossettWaterClicked: false,
-    dishwasherWaterClicked: false
+    dishwasherWaterClicked: false,
+    waterhoseWaterClicked: false
 }
 
 async function waterInit(){
@@ -27,6 +34,7 @@ async function waterInit(){
 function waterEvents() {
     document.querySelector(fossett.element).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
     document.querySelector(dishwasher.element).addEventListener("click", ()=> waterInputs.dishwasherWaterClicked = true);
+    document.querySelector(waterhose.element).addEventListener("click", ()=> waterInputs.waterhoseWaterClicked = true);
 }
 
 function waterLoop(){
@@ -53,8 +61,8 @@ function waterRenderModel(model){
 
 function hunterLoop(model) {
     console.log("Hunter");
-let elementTarget = document.querySelector(model.waterElement);
-setTimeout(() => {
-    elementTarget.classList.remove("hide");
-}, 2000);
+    let elementTarget = document.querySelector(model.waterElement);
+    setTimeout(() => {
+        elementTarget.classList.remove("hide");
+    }, 2000);
 }
