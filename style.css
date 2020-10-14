@@ -30,6 +30,7 @@ body {
     width: 6vw;
     background-image: url(svgs/goldmedal-01.svg);
     background-size: cover;
+    background-position: 50% 50%;
     margin: 8px;
 }
 
@@ -39,4 +40,25 @@ body {
     background-image: url(svgs/goldmedal-02.svg);
     background-size: cover;
     margin: 8px;
+}
+
+#snif {
+    background-image: url(svgs/snif.svg);
+    width: 20vw;
+    height: 20vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#rotation {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(svgs/rotate.svg);
+    background-size: cover;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

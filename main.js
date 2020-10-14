@@ -18,7 +18,20 @@ async function getSVG(filename) {
 
 async function mainInit(){
     await initialState(); 
+    rotate();
 }
+
+function rotate() {
+    window.removeEventListener("orientationchange", rotate);
+if(window.innerWidth>window.innerHeight) {
+    document.querySelector("#rotation").classList.add("hide");
+} else {
+    document.querySelector("#rotation").classList.remove("hide");
+}
+
+window.addEventListener("orientationchange", rotate);
+}
+
 
 async function winCondition(house){
     if(game.points === game.maxPoints){
