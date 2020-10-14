@@ -1,38 +1,68 @@
 .hide {
-   visibility: hidden;
+  visibility: hidden;
 }
 
 #game {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    justify-items: center;
-    align-items: center;
-    justify-self: center;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  justify-self: center;
 }
+
 
 /* MEDALS STYLING */
 
 #medal_container {
-    display: flex;
-    position: absolute;
-    top: 2vw;
-    right: 2.5vw;
+  display: flex;
+  position: absolute;
+  top: 2vw;
+  right: 2.5vw;
 }
 
 .full {
-    height: 9vw;
-    width: 9vw;
-    background-image: url(svgs/goldmedal-01.svg);
-    background-size: cover;
-    margin: 8px;
+  height: 9vw;
+  width: 9vw;
+  background-image: url(svgs/goldmedal-01.svg);
+  background-size: cover;
+  margin: 8px;
 }
 
 .gray {
-    height: 9vw;
-    width: 9vw;
-    background-image: url(svgs/goldmedal-02.svg);
-    background-size: cover;
-    margin: 8px;
+  height: 9vw;
+  width: 9vw;
+  background-image: url(svgs/goldmedal-02.svg);
+  background-size: cover;
+  margin: 8px;
+}
+
+/* ANIMATIONS */
+
+.vibration {
+  animation-name: vibration;
+}
+
+@keyframes vibration {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
