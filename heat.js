@@ -18,6 +18,8 @@ const heatInputs = {
 }
 
 async function heatInit(){
+    document.querySelector("#medal_container").classList.add("hide");
+
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("heat"); //får det returnede SVG
     heatEvents();

@@ -25,6 +25,7 @@ const powerInputs = {
 }
 
 async function powerInit(){
+    document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("power"); //får det returnede SVG
     powerEvents();
