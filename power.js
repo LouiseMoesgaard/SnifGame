@@ -68,7 +68,6 @@ function powerRenderModel(model){
     }
 }
 
-
 function addAnimations() {
     console.log("lets shake it up!");
     document.querySelector("#power_vacuum_off").classList.add("shake");
