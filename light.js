@@ -58,6 +58,14 @@ function lightRenderModel(model){
         document.querySelector(model.lightElement).classList.remove("hide");
     } else{
         document.querySelector(model.lightElement).classList.add("hide");
+        lightHunter(model);
     }
 
+}
+
+function lightHunter(model) {
+    let elementTarget = document.querySelector(model.lightElement);
+    setTimeout(() => {
+        elementTarget.classList.remove("hide");
+    }, 2000);
 }

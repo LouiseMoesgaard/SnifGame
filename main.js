@@ -17,8 +17,16 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
+
     await initialState(); 
     rotate();
+
+    document.querySelector("#game").innerHTML =  await getSVG("start_screen");
+    document.querySelector("#medal_container").classList.add("hide");
+    document.querySelector("#medal_win").classList.add("hide");
+    document.querySelector("#play_button").addEventListener("click", initialState); 
+
+    //await initialState(); 
 }
 
 function rotate() {
@@ -39,11 +47,18 @@ async function winCondition(house){
         game.complete.push(house); 
         await initialState();
         document.querySelectorAll(".gray")[0].className = "full";
+        document.querySelector("#medal_win").classList.remove("hide");
+        window.setTimeout(hideBigMedal, 1000);
     } 
+}
+
+function hideBigMedal() {
+        document.querySelector("#medal_win").classList.add("hide");
 }
 
 async function initialState(){
     document.querySelector("#game").innerHTML =  await getSVG("main");
+    document.querySelector("#medal_container").classList.remove("hide");
 
     document.querySelector("#main_water").addEventListener("click", waterInit); //#water er husnavn svg
     document.querySelector("#main_power").addEventListener("click", powerInit);
