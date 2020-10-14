@@ -66,12 +66,11 @@ function waterRenderModel(model){
         } else if(model == waterhose) {
             document.querySelector("#waterhoseWater").classList.remove("swing");
         }
-        hunterLoop(model);
+        waterHunter(model);
     }
 }
 
-function hunterLoop(model) {
-    console.log("Hunter");
+function waterHunter(model) {
     let elementTarget = document.querySelector(model.waterElement);
     setTimeout(() => {
         elementTarget.classList.remove("hide");

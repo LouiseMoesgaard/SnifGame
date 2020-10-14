@@ -51,5 +51,17 @@ function heatRenderModel(model){
         document.querySelector(model.onElement).classList.add("hide");
         document.querySelector(model.offElement).classList.remove("hide");
     }
+    heatHunter(model);
+}
 
+function heatHunter(model) {
+    let elementTarget;
+    if(model.heatOn){
+        elementTarget = document.querySelector(model.offElement)
+    } else {
+        elementTarget = document.querySelector(model.onElement)
+    }
+    setTimeout(() => {
+        elementTarget.classList.remove("hide");
+    }, 2000);
 }
