@@ -63,17 +63,13 @@ function powerRenderModel(model){
     } else{
         document.querySelector(model.powerElement).classList.add("hide");
         if(model == vacuum) {
-        document.querySelector("#power_vacuum_off").classList.remove("shake");
+            document.querySelector("#power_vacuum_off").classList.remove("shake");
+        }
     }
-<<<<<<< HEAD
 }
 
 
 function addAnimations() {
     console.log("lets shake it up!");
- document.querySelector("#power_vacuum_off").classList.add("vibration");
+    document.querySelector("#power_vacuum_off").classList.add("shake");
 }
-=======
-    }
-}
->>>>>>> animation_vacuum
