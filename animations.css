@@ -27,3 +27,26 @@
     }
   }
   
+  .shake {
+    animation: shake 1s both;
+    transform: translate3d(0, 0, 0);
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-2px, 0, 0);
+    }
+  
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%,
+    50% {
+      transform: translate3d(-3px, 0, 0);
+    }
+  
+  }
