@@ -29,6 +29,7 @@ async function waterInit(){
     document.querySelector("#game").innerHTML = await getSVG("water");
     waterEvents();
     waterLoop();
+    addWaterAnimations();
 }
 
 function waterEvents() {
@@ -50,11 +51,21 @@ function waterLoop(){
 requestAnimationFrame(waterLoop);
 }
 
+function addWaterAnimations() {
+    document.querySelector("#dishwasher").classList.add("vibrate");
+    document.querySelector("#waterhoseWater").classList.add("swing");
+}
+
 function waterRenderModel(model){
     if(model.waterOn){
         document.querySelector(model.waterElement).classList.remove("hide");
     } else{
         document.querySelector(model.waterElement).classList.add("hide");
+        if(model == dishwasher) {
+            document.querySelector("#dishwasher").classList.remove("vibrate");
+        } else if(model == waterhose) {
+            document.querySelector("#waterhoseWater").classList.remove("swing");
+        }
         hunterLoop(model);
     }
 }
@@ -64,5 +75,10 @@ function hunterLoop(model) {
     let elementTarget = document.querySelector(model.waterElement);
     setTimeout(() => {
         elementTarget.classList.remove("hide");
+        if(model == dishwasher) {
+            addWaterAnimations();
+        } else if (model == waterhose) {
+            addWaterAnimations();
+        }
     }, 2000);
 }
