@@ -25,11 +25,12 @@ const powerInputs = {
 }
 
 async function powerInit(){
+    document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("power"); //får det returnede SVG
     powerEvents();
     powerLoop();
-    addAnimations();
+    addPowerAnimations();
 }
 
 function powerEvents() {
@@ -52,10 +53,6 @@ function powerLoop(){
 requestAnimationFrame(powerLoop);
 }
 
-function addAnimations() {
-    document.querySelector("#power_vacuum_off").classList.add("shake");
-}
-
 function powerRenderModel(model){
     console.log(model)
     if(model.powerOn){
@@ -66,9 +63,17 @@ function powerRenderModel(model){
             document.querySelector("#power_vacuum_off").classList.remove("shake");
         }
     }
+    powerHunter(model);
 }
 
-function addAnimations() {
+function powerHunter(model) {
+    let elementTarget = document.querySelector(model.powerElement);
+    setTimeout(() => {
+        elementTarget.classList.remove("hide");
+    }, 2000);
+}
+
+function addPowerAnimations() {
     console.log("lets shake it up!");
     document.querySelector("#power_vacuum_off").classList.add("shake");
 }

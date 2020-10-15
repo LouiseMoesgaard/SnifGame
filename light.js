@@ -26,6 +26,7 @@ const lighInputs = {
 }
 
 async function lightInit(){
+    document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
     lightEvents();
@@ -57,6 +58,14 @@ function lightRenderModel(model){
         document.querySelector(model.lightElement).classList.remove("hide");
     } else{
         document.querySelector(model.lightElement).classList.add("hide");
+        lightHunter(model);
     }
 
+}
+
+function lightHunter(model) {
+    let elementTarget = document.querySelector(model.lightElement);
+    setTimeout(() => {
+        elementTarget.classList.remove("hide");
+    }, 2000);
 }

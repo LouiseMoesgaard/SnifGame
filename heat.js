@@ -18,6 +18,8 @@ const heatInputs = {
 }
 
 async function heatInit(){
+    document.querySelector("#medal_container").classList.add("hide");
+
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("heat"); //får det returnede SVG
     heatEvents();
@@ -51,5 +53,17 @@ function heatRenderModel(model){
         document.querySelector(model.onElement).classList.add("hide");
         document.querySelector(model.offElement).classList.remove("hide");
     }
+    heatHunter(model);
+}
 
+function heatHunter(model) {
+    let elementTarget;
+    if(model.heatOn){
+        elementTarget = document.querySelector(model.offElement)
+    } else {
+        elementTarget = document.querySelector(model.onElement)
+    }
+    setTimeout(() => {
+        elementTarget.classList.remove("hide");
+    }, 2000);
 }
