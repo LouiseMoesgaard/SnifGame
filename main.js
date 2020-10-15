@@ -12,6 +12,10 @@ document.body.addEventListener('touchstart', function() {
     }, false)
 window.onorientationchange = rotate;
 
+document.addEventListener("click", event =>{
+    document.querySelector("#click").play();
+})
+
 let game = {
     points: 0,
     maxPoints: 2,
@@ -28,9 +32,6 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
-
-    await initialState(); 
-
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
     document.querySelector("#play_button").classList.add("wiggle");
@@ -107,9 +108,6 @@ function houseComplete(house){
     document.querySelector(`#main_${house}`).removeEventListener("click", window[`${house}Init`]);  
     document.querySelector(`#main_${house}_on`).removeEventListener("click", window[`${house}Init`]);
 }
-
-
-
 
 
 
