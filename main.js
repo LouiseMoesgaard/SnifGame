@@ -27,6 +27,7 @@ async function mainInit(){
     document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate"));
     document.querySelector("#medal_container").classList.add("hide");
     document.querySelector("#medal_win").classList.add("hide");
+    document.querySelector("div#snif").classList.add("hide");
 
     document.querySelector("#play_button").addEventListener("click", initialState); 
 
@@ -55,6 +56,11 @@ async function winCondition(house){
         document.querySelector("#medal_win").classList.add("pulse");
         document.querySelector("#medal_win").addEventListener("animationend", () => {
             document.querySelector("#medal_win").classList.add("shrink");
+            if(game.medal == 4) {
+                setTimeout(() => {
+                    displayEndScreen();
+                }, 4000);   
+            }    
         });
         window.setTimeout(hideBigMedal, 3000);
     } 
@@ -80,7 +86,7 @@ async function initialState(){
     document.querySelector("#main_light_on").addEventListener("click", lightInit);
     document.querySelector("#main_heat_on").addEventListener("click", heatInit);
 
-
+    document.querySelector("#snif").classList.remove("hide");
 
     document.querySelector("#main_water_on").classList.add("levitate"); //#water er husnavn svg
     document.querySelector("#main_power_on").classList.add("levitate");
@@ -100,5 +106,11 @@ function houseComplete(house){
 }
 
 
-
+async function displayEndScreen() {
+    await initialState();
+    
+    document.querySelector("#game").innerHTML =  await getSVG("end_screen");
+    document.querySelector("#snif").classList.add("hide");
+    }
+    
 
