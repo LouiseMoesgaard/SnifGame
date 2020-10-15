@@ -47,6 +47,37 @@ body {
   top: 0;
   left: 0;
 }
+
+#music_credit {
+  position: absolute;
+  bottom: 2px;
+  left: 10px;
+  font-size: .8rem;
+}
+
+#back {
+background-image: url(svgs/\ back.svg);
+background-size: cover;
+width: 10vw;
+height: 10vw;
+position: absolute;
+top: 2vw;
+left: 2vw;
+}
+
+#music_on_off {
+background-image: url(svgs/music.svg);
+width: 7vw;
+height: 7vw;
+position: absolute;
+bottom: 40px;
+left: 1.5vw;
+}
+
+.off {
+  filter: grayscale(1);
+}
+
 /* MEDALS STYLING */
 
 #medal_container {

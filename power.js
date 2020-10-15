@@ -28,6 +28,9 @@ async function powerInit(){
     document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("power"); //får det returnede SVG
+    document.querySelector("#hej").play();
+    /*document.querySelector("#back").classList.remove("hide");
+    document.querySelector("#back").addEventListener("click", back);*/
     powerEvents();
     powerLoop();
     addPowerAnimations();
@@ -70,10 +73,12 @@ function powerHunter(model) {
     let elementTarget = document.querySelector(model.powerElement);
     setTimeout(() => {
         elementTarget.classList.remove("hide");
+        document.querySelector("#hehe").play();
         if(model == vacuum) {
 addPowerAnimations();
+document.querySelector("#hehe").play();
         }
-    }, 1000);
+    }, 2000);
 }
 
 function addPowerAnimations() {

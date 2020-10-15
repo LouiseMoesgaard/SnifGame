@@ -7,8 +7,7 @@ document.body.addEventListener('touchstart', function() {
     audio.pause()
     audio.currentTime = 0
     }
-    audiosWeWantToUnlock = null
-
+    audiosWeWantToUnlock=null;
     }, false)
 window.onorientationchange = rotate;
 
@@ -35,8 +34,10 @@ async function mainInit(){
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
     document.querySelector("#play_button").classList.add("wiggle");
-    document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate"));
+    document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate2"));
     document.querySelector("#medal_container").classList.add("hide");
+    document.querySelector("#music_on_off").classList.add("hide");
+    document.querySelector("#back").classList.add("hide");
     document.querySelector("#medal_win").classList.add("hide");
 
     document.querySelector("#play_button").addEventListener("click", initialState);  
@@ -77,6 +78,7 @@ function hideBigMedal() {
 async function initialState(){
     document.querySelector("#game").innerHTML =  await getSVG("main");
     document.querySelector("#medal_container").classList.remove("hide");
+    document.querySelector("#music_on_off").classList.remove("hide");
 
     document.querySelector("#main_water").addEventListener("click", waterInit); //#water er husnavn svg
     document.querySelector("#main_power").addEventListener("click", powerInit);
@@ -92,15 +94,32 @@ async function initialState(){
     document.querySelector("#main_power_on").classList.add("levitate");
     document.querySelector("#main_light_on").classList.add("levitate");
     document.querySelector("#main_heat_on").classList.add("levitate");
-
+    
     document.querySelector("#backgroundmusic").volume = 0.1;
     document.querySelector("#backgroundmusic").loop = true;
     document.querySelector("#backgroundmusic").play();
     
+    document.querySelector("#music_on_off").addEventListener("click", musicOff);
+
     //document.querySelector("#back").addEventListener("click", initialState);
     game.complete.forEach(houseComplete);
 }
 
+function musicOn() {
+    document.querySelector("#music_on_off").removeEventListener("click", musicOn);
+    document.querySelector("#music_on_off").classList.remove("off");
+    document.querySelector("#backgroundmusic").play();
+
+    document.querySelector("#music_on_off").addEventListener("click", musicOff);
+}
+
+function musicOff() {
+    document.querySelector("#music_on_off").removeEventListener("click", musicOff);
+    document.querySelector("#backgroundmusic").pause();
+    document.querySelector("#music_on_off").classList.add("off");
+
+    document.querySelector("#music_on_off").addEventListener("click", musicOn);
+}
 
 function houseComplete(house){
     document.querySelector(`#main_${house}_on`).classList.add("hide");   
@@ -109,6 +128,9 @@ function houseComplete(house){
     document.querySelector(`#main_${house}_on`).removeEventListener("click", window[`${house}Init`]);
 }
 
+function back() {
+    console.log("Not working");
+}
 
 
 

@@ -22,6 +22,9 @@ async function heatInit(){
 
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("heat"); //får det returnede SVG
+    document.querySelector("#hej").play();
+    /*document.querySelector("#back").classList.remove("hide");
+    document.querySelector("#back").addEventListener("click", back);*/
     heatEvents();
     heatLoop();
 }
@@ -65,5 +68,6 @@ function heatHunter(model) {
     }
     setTimeout(() => {
         elementTarget.classList.remove("hide");
-    }, 1000);
+        document.querySelector("#hehe").play();
+    }, 2000);
 }
