@@ -1,39 +1,85 @@
+body {
+    background-color: rgb(227, 234, 236);
+    margin: 0;
+    overflow: hidden;
+}
+
 .hide {
   visibility: hidden;
 }
 
-#game {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  justify-items: center;
-  align-items: center;
-  justify-self: center;
+#container {
+    width: 100vw;
+    height: 100vh;
 }
 
+#game {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    justify-self: center;
+}
 
+#game svg {
+    height: 100%;
+}
+
+#snif {
+    background-image: url(svgs/snif.svg);
+    width: 20vw;
+    height: 20vw;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#rotation {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(svgs/rotate.svg);
+    background-size: cover;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 /* MEDALS STYLING */
 
 #medal_container {
-  display: flex;
-  position: absolute;
-  top: 2vw;
-  right: 2.5vw;
+    display: flex;
+    position: absolute;
+    top: 6vh;
+    right: 2vw;
 }
 
 .full {
-  height: 9vw;
-  width: 9vw;
-  background-image: url(svgs/goldmedal-01.svg);
-  background-size: cover;
-  margin: 8px;
+    height: 6vw;
+    width: 6vw;
+    background-image: url(svgs/goldmedal-01.svg);
+    background-size: cover;
+    background-position: 50% 50%;
+    margin: 8px;
 }
 
 .gray {
-  height: 9vw;
-  width: 9vw;
-  background-image: url(svgs/goldmedal-02.svg);
-  background-size: cover;
-  margin: 8px;
+    height: 6vw;
+    width: 6vw;
+    background-image: url(svgs/goldmedal-02.svg);
+    background-size: cover;
+    background-position: 50% 50%;
+    margin: 8px;
+}
+
+#medal_win {
+    width: 40vw;
+    height: 40vw;
+    background-image: url(svgs/win_medal-01.svg);
+    background-size: cover;
+    position: absolute;
+    top: 15vh;
+    left: 30vw;
 }

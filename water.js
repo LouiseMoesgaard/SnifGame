@@ -25,6 +25,7 @@ const waterInputs = {
 }
 
 async function waterInit(){
+    document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("water");
     waterEvents();
