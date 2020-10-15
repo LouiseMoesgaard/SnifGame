@@ -67,13 +67,8 @@ function powerRenderModel(model){
 }
 
 function powerHunter(model) {
-    let hunter = document.querySelector("#hunter");
     let elementTarget = document.querySelector(model.powerElement);
-    hunter.classList.remove("hide");
-    hunter.classList.add("run");
     setTimeout(() => {
-        hunter.classList.add("hide");
-        hunter.classList.remove("run");
         elementTarget.classList.remove("hide");
         if(model == vacuum) {
 addPowerAnimations();

@@ -72,14 +72,10 @@ function waterRenderModel(model){
 }
 
 function waterHunter(model) {
-    let hunter = document.querySelector("#hunter");
     let elementTarget = document.querySelector(model.waterElement);
-    hunter.classList.remove("hide");
-    hunter.classList.add("run");
+
     setTimeout(() => {
         elementTarget.classList.remove("hide");
-        hunter.classList.add("hide");
-        hunter.classList.remove("run");
         if(model == dishwasher) {
             addWaterAnimations();
         } else if (model == waterhose) {

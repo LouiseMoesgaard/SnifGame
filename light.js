@@ -72,13 +72,8 @@ function lightRenderModel(model){
 }
 
 function lightHunter(model) {
-    let hunter = document.querySelector("#hunter");
     let elementTarget = document.querySelector(model.lightElement);
-    hunter.classList.remove("hide");
-    hunter.classList.add("run");
     setTimeout(() => {
-        hunter.classList.add("hide");
-        hunter.classList.remove("run"); 
         elementTarget.classList.remove("hide");
         addLightAnimations();
     }, 1000);

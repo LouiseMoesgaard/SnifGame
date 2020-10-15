@@ -18,7 +18,7 @@ document.addEventListener("click", event =>{
 
 let game = {
     points: 0,
-    maxPoints: 2,
+    maxPoints: 10,
     medal:0,
     complete:[]
 }
