@@ -52,6 +52,12 @@
   animation-timing-function: ease-in-out;
 }
 
+.move_medals {
+  animation-name: move;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(2);
@@ -187,5 +193,12 @@
   }
   to {
     transform: translate(0, -0px);
+  }
+}
+
+@keyframes move {
+    100% {
+    top: 75vh;
+    right: 32vw;
   }
 }

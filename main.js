@@ -68,7 +68,7 @@ async function winCondition(house){
             if(game.medal == 4) {
                 setTimeout(() => {
                     displayEndScreen();
-                }, 4000);   
+                }, 3000);   
             }    
         });
         window.setTimeout(hideBigMedal, 3000);
@@ -143,10 +143,24 @@ function back() {
 async function displayEndScreen() {
     await initialState();
     
+    document.querySelector("#slut").play();
     document.querySelector("#game").innerHTML =  await getSVG("end_screen");
     document.querySelector("#snif").classList.add("hide");
+
+    document.querySelector("#medal_container").classList.add("move_medals");
+
+    window.setTimeout(reset, 13000)
     }
     
+    function reset() {
+        console.log("help");
+
+        document.querySelector("#medal_container").classList.remove("move_medals");
+
+        //reset alle huse til ike at være spillet
+        
+        //mainInit()
+    }
 
 
 
