@@ -59,12 +59,18 @@ async function winCondition(house){
         await initialState();
         document.querySelectorAll(".gray")[0].className = "full";
         document.querySelector("#medal_win").classList.remove("hide");
-        window.setTimeout(hideBigMedal, 1000);
+        document.querySelector("#medal_win").classList.add("pulse");
+        document.querySelector("#medal_win").addEventListener("animationend", () => {
+            document.querySelector("#medal_win").classList.add("shrink");
+        });
+        window.setTimeout(hideBigMedal, 3000);
     } 
 }
 
 function hideBigMedal() {
         document.querySelector("#medal_win").classList.add("hide");
+        document.querySelector("#medal_win").classList.remove("pulse");
+        document.querySelector("#medal_win").classList.remove("shrink");
 }
 
 async function initialState(){
