@@ -30,6 +30,9 @@ async function mainInit(){
 
     document.querySelector("#play_button").addEventListener("click", initialState); 
 
+    document.querySelector("#backgroundmusic").volume = 0.05;
+ 
+
     //await initialState(); 
 }
 
@@ -92,6 +95,11 @@ function houseComplete(house){
     document.querySelector(`#main_${house}`).removeEventListener("click", window[`${house}Init`]);  
     document.querySelector(`#main_${house}_on`).removeEventListener("click", window[`${house}Init`]);
 }
+
+
+
+
+
 
 
 
