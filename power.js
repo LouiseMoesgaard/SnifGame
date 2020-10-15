@@ -67,13 +67,20 @@ function powerRenderModel(model){
 }
 
 function powerHunter(model) {
+    let hunter = document.querySelector("#hunter");
     let elementTarget = document.querySelector(model.powerElement);
+    hunter.classList.remove("hide");
+    hunter.classList.add("run");
     setTimeout(() => {
+        hunter.classList.add("hide");
+        hunter.classList.remove("run");
         elementTarget.classList.remove("hide");
-    }, 2000);
+        if(model == vacuum) {
+addPowerAnimations();
+        }
+    }, 1000);
 }
 
 function addPowerAnimations() {
-    console.log("lets shake it up!");
     document.querySelector("#power_vacuum_off").classList.add("shake");
 }
