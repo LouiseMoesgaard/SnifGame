@@ -1,5 +1,16 @@
 "use strict";
 
+document.body.addEventListener('touchstart', function() {
+    var audios = [document.querySelector("#backgroundmusic")]
+    for(let audio of audios) {
+    audio.play()
+    audio.pause()
+    audio.currentTime = 0
+    }
+    audiosWeWantToUnlock = null
+
+    }, false)
+window.onorientationchange = rotate;
 
 let game = {
     points: 0,
@@ -19,7 +30,6 @@ async function getSVG(filename) {
 async function mainInit(){
 
     await initialState(); 
-    rotate();
 
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
@@ -28,23 +38,17 @@ async function mainInit(){
     document.querySelector("#medal_container").classList.add("hide");
     document.querySelector("#medal_win").classList.add("hide");
 
-    document.querySelector("#play_button").addEventListener("click", initialState); 
-
-    document.querySelector("#backgroundmusic").volume = 0.05;
- 
+    document.querySelector("#play_button").addEventListener("click", initialState);  
 
     //await initialState(); 
 }
 
 function rotate() {
-    window.removeEventListener("orientationchange", rotate);
-if(window.innerWidth>window.innerHeight) {
-    document.querySelector("#rotation").classList.add("hide");
-} else {
-    document.querySelector("#rotation").classList.remove("hide");
-}
-
-window.addEventListener("orientationchange", rotate);
+    if(window.innerWidth>window.innerHeight) {
+        document.querySelector("#rotation").classList.remove("hide");
+    } else {
+        document.querySelector("#rotation").classList.add("hide");
+    }
 }
 
 
@@ -77,12 +81,14 @@ async function initialState(){
     document.querySelector("#main_light_on").addEventListener("click", lightInit);
     document.querySelector("#main_heat_on").addEventListener("click", heatInit);
 
-
-
     document.querySelector("#main_water_on").classList.add("levitate"); //#water er husnavn svg
     document.querySelector("#main_power_on").classList.add("levitate");
     document.querySelector("#main_light_on").classList.add("levitate");
     document.querySelector("#main_heat_on").classList.add("levitate");
+
+    document.querySelector("#backgroundmusic").volume = 0.1;
+    document.querySelector("#backgroundmusic").loop = true;
+    document.querySelector("#backgroundmusic").play();
     
     //document.querySelector("#back").addEventListener("click", initialState);
     game.complete.forEach(houseComplete);
