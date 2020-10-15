@@ -31,6 +31,7 @@ async function lightInit(){
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
     lightEvents();
     lightLoop();
+    addLightAnimations();
 }
 
 function lightEvents() {
@@ -53,11 +54,18 @@ function lightLoop(){
 requestAnimationFrame(lightLoop);
 }
 
+function addLightAnimations() {
+    document.querySelector("#lampLight").classList.add("glow");
+    document.querySelector("#floorLampLight").classList.add("glow");
+    document.querySelector("#tentLight").classList.add("glow");
+}
+
 function lightRenderModel(model){
     if(model.lightOn){
         document.querySelector(model.lightElement).classList.remove("hide");
     } else{
         document.querySelector(model.lightElement).classList.add("hide");
+        document.querySelector(model.lightElement).classList.remove("glow");
         lightHunter(model);
     }
 
@@ -72,5 +80,6 @@ function lightHunter(model) {
         hunter.classList.add("hide");
         hunter.classList.remove("run"); 
         elementTarget.classList.remove("hide");
+        addLightAnimations();
     }, 1000);
 }
