@@ -22,8 +22,12 @@ async function mainInit(){
     rotate();
 
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
+
+    document.querySelector("#play_button").classList.add("wiggle");
+    document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate"));
     document.querySelector("#medal_container").classList.add("hide");
     document.querySelector("#medal_win").classList.add("hide");
+
     document.querySelector("#play_button").addEventListener("click", initialState); 
 
     //await initialState(); 
@@ -75,6 +79,13 @@ async function initialState(){
     document.querySelector("#main_power_on").addEventListener("click", powerInit);
     document.querySelector("#main_light_on").addEventListener("click", lightInit);
     document.querySelector("#main_heat_on").addEventListener("click", heatInit);
+
+
+
+    document.querySelector("#main_water_on").classList.add("levitate"); //#water er husnavn svg
+    document.querySelector("#main_power_on").classList.add("levitate");
+    document.querySelector("#main_light_on").classList.add("levitate");
+    document.querySelector("#main_heat_on").classList.add("levitate");
     
     //document.querySelector("#back").addEventListener("click", initialState);
     game.complete.forEach(houseComplete);
@@ -87,5 +98,7 @@ function houseComplete(house){
     document.querySelector(`#main_${house}`).removeEventListener("click", window[`${house}Init`]);  
     document.querySelector(`#main_${house}_on`).removeEventListener("click", window[`${house}Init`]);
 }
+
+
 
 
