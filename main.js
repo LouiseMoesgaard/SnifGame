@@ -7,7 +7,7 @@ document.body.addEventListener('touchstart', function() {
     audio.pause()
     audio.currentTime = 0
     }
-    audiosWeWantToUnlock=null;
+    audios=null;
     }, false)
 window.onorientationchange = rotate;
 
@@ -31,6 +31,7 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
+    // document.querySelector("#music_on_off").addEventListener("click", musicOff);
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
     document.querySelector("#play_button").classList.add("wiggle");
@@ -103,7 +104,7 @@ document.querySelector("#snif").classList.remove("hide");
     document.querySelector("#main_light_on").classList.add("levitate");
     document.querySelector("#main_heat_on").classList.add("levitate");
     
-    document.querySelector("#backgroundmusic").volume = 0.1;
+    document.querySelector("#backgroundmusic").volume = 0.05;
     document.querySelector("#backgroundmusic").loop = true;
     document.querySelector("#backgroundmusic").play();
     
@@ -117,7 +118,6 @@ function musicOn() {
     document.querySelector("#music_on_off").removeEventListener("click", musicOn);
     document.querySelector("#music_on_off").classList.remove("off");
     document.querySelector("#backgroundmusic").play();
-
     document.querySelector("#music_on_off").addEventListener("click", musicOff);
 }
 
