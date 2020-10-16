@@ -7,7 +7,7 @@ document.body.addEventListener('touchstart', function() {
     audio.pause()
     audio.currentTime = 0
     }
-    audiosWeWantToUnlock=null;
+    audios=null;
     }, false)
 window.onorientationchange = rotate;
 
@@ -31,7 +31,7 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
-    document.querySelector("#music_on_off").addEventListener("click", musicOff);
+    // document.querySelector("#music_on_off").addEventListener("click", musicOff);
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
     document.querySelector("#play_button").classList.add("wiggle");
