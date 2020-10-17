@@ -56,7 +56,7 @@ requestAnimationFrame(heatLoop);
 }
 
 function addHeatAnimations() {
-    document.querySelector("#floorLamp").classList.add("levitate");
+    document.querySelector("#heat_floor").classList.add("levitate");
    
 }
 
@@ -76,7 +76,7 @@ function heatHunter(model) {
     setTimeout(() => {
         elementTarget.classList.remove("hide");
         heheSound();
-        addheatAnimations();
+        addHeatAnimations();
     }, randomTime());
 }
 }
