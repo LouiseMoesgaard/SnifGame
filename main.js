@@ -7,8 +7,7 @@ document.body.addEventListener('touchstart', function() {
     audio.pause()
     audio.currentTime = 0
     }
-    audiosWeWantToUnlock = null
-
+    audios=null;
     }, false)
 window.onorientationchange = rotate;
 
@@ -23,6 +22,11 @@ let game = {
     complete:[]
 }
 
+let mySeconds = [1000, 2500, 4000];
+function randomTime() {
+return mySeconds[Math.floor(Math.random()*mySeconds.length)];
+}
+
 document.addEventListener("DOMContentLoaded", mainInit);
 
 async function getSVG(filename) {
@@ -32,11 +36,14 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
+    // document.querySelector("#music_on_off").addEventListener("click", musicOff);
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
     document.querySelector("#play_button").classList.add("wiggle");
-    document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate"));
+    document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate2"));
     document.querySelector("#medal_container").classList.add("hide");
+    document.querySelector("#music_on_off").classList.add("hide");
+    document.querySelector("#back").classList.add("hide");
     document.querySelector("#medal_win").classList.add("hide");
     document.querySelector("div#snif").classList.add("hide");
 
@@ -67,7 +74,7 @@ async function winCondition(house){
             if(game.medal == 4) {
                 setTimeout(() => {
                     displayEndScreen();
-                }, 4000);   
+                }, 2000);   
             }    
         });
         window.setTimeout(hideBigMedal, 3000);
@@ -83,6 +90,8 @@ function hideBigMedal() {
 async function initialState(){
     document.querySelector("#game").innerHTML =  await getSVG("main");
     document.querySelector("#medal_container").classList.remove("hide");
+    document.querySelector("#music_on_off").classList.remove("hide");
+    document.querySelector("#back").classList.add("hide");
 
     document.querySelector("#main_water").addEventListener("click", waterInit); //#water er husnavn svg
     document.querySelector("#main_power").addEventListener("click", powerInit);
@@ -100,15 +109,42 @@ document.querySelector("#snif").classList.remove("hide");
     document.querySelector("#main_power_on").classList.add("levitate");
     document.querySelector("#main_light_on").classList.add("levitate");
     document.querySelector("#main_heat_on").classList.add("levitate");
-
-    document.querySelector("#backgroundmusic").volume = 0.1;
+    
+    document.querySelector("#backgroundmusic").volume = 0.05;
     document.querySelector("#backgroundmusic").loop = true;
     document.querySelector("#backgroundmusic").play();
     
-    //document.querySelector("#back").addEventListener("click", initialState);
+    document.querySelector("#music_on_off").addEventListener("click", musicOff);
+
+    document.querySelector("#back").addEventListener("click", initialState);
     game.complete.forEach(houseComplete);
 }
 
+function musicOn() {
+    document.querySelector("#music_on_off").removeEventListener("click", musicOn);
+    document.querySelector("#music_on_off").classList.remove("off");
+    document.querySelector("#backgroundmusic").play();
+    document.querySelector("#music_on_off").addEventListener("click", musicOff);
+}
+
+function musicOff() {
+    document.querySelector("#music_on_off").removeEventListener("click", musicOff);
+    document.querySelector("#backgroundmusic").pause();
+    document.querySelector("#music_on_off").classList.add("off");
+
+    document.querySelector("#music_on_off").addEventListener("click", musicOn);
+}
+
+function heheSound() {
+    document.querySelector("#hehe").pause();
+    document.querySelector("#hvad").pause();
+let randSound = Math.floor(Math.random()*2);
+if(randSound==0) {
+    document.querySelector("#hehe").play();
+} else if(randSound==1) {
+    document.querySelector("#hvad").play();
+}
+}
 
 function houseComplete(house){
     document.querySelector(`#main_${house}_on`).classList.add("hide");   
@@ -117,12 +153,20 @@ function houseComplete(house){
     document.querySelector(`#main_${house}_on`).removeEventListener("click", window[`${house}Init`]);
 }
 
-
 async function displayEndScreen() {
     await initialState();
     
+    document.querySelector("#slut").play();
     document.querySelector("#game").innerHTML =  await getSVG("end_screen");
     document.querySelector("#snif").classList.add("hide");
+
+    document.querySelector("#medal_container").classList.add("move_medals");
+
+    window.setTimeout(restart, 15000)
+    }
+
+    function restart() {
+        location.reload();
     }
     
 
