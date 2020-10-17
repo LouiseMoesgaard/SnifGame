@@ -40,11 +40,11 @@ function lightEvents() {
 }
 
 function lightLoop(){
-    Object.keys(lighInputs).forEach(key =>{
+    Object.keys(lightInputs).forEach(key =>{
 
-        if(lighInputs[key]){
-            window[key.split("Light")[0]].lightOn = !lighInputs[key];
-            lighInputs[key] = false;
+        if(lightInputs[key]){
+            window[key.split("Light")[0]].lightOn = !lightInputs[key];
+            lightInputs[key] = false;
             game.points++
             lightRenderModel(window[key.split("Light")[0]]);
             winCondition("light");
