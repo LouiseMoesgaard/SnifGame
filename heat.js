@@ -2,13 +2,11 @@
 
 window.radiatorLeft = {
     onElement:"#heat_radi_left_on",
-    offElement:"#heat_radi_left_off",
     heatOn: true
 }
 
 window.radiatorRight = {
     onElement:"#heat_radi_right_on",
-    offElement:"#heat_radi_right_off",
     heatOn: false
 }
 
@@ -55,11 +53,6 @@ function heatLoop(){
 requestAnimationFrame(heatLoop);
 }
 
-function addHeatAnimations() {
-    document.querySelector("#heat_floor").classList.add("levitate");
-   
-}
-
 function heatRenderModel(model){
     if(model.heatOn){
         document.querySelector(model.onElement).classList.remove("hide");
@@ -72,11 +65,16 @@ function heatRenderModel(model){
 
 function heatHunter(model) {
     let elementTarget = document.querySelector(model.onElement);
-    if(game.points<8) {
-    setTimeout(() => {
+    
+    if(game.points < 8) {
+        setTimeout(() => {
         elementTarget.classList.remove("hide");
         heheSound();
         addHeatAnimations();
-    }, randomTime());
+        }, randomTime());
+    }
 }
+
+function addHeatAnimations() {
+    document.querySelector("#heat_floor").classList.add("levitate");  
 }

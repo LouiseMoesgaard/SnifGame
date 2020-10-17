@@ -14,9 +14,6 @@ let game = {
 }
 
 let mySeconds = [1000, 2000, 3000];
-function randomTime() {
-return mySeconds[Math.floor(Math.random()*mySeconds.length)];
-}
 
 document.addEventListener("DOMContentLoaded", mainInit);
 
@@ -27,7 +24,6 @@ async function getSVG(filename) {
 }
 
 async function mainInit(){
-    // document.querySelector("#music_on_off").addEventListener("click", musicOff);
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
     document.querySelector("#play_button").classList.add("wiggle");
@@ -40,7 +36,6 @@ async function mainInit(){
 
     document.querySelector("#play_button").addEventListener("click", initialState);  
 
-    //await initialState(); 
 }
 
 function rotate() {
@@ -49,6 +44,10 @@ function rotate() {
     } else {
         document.querySelector("#rotation").classList.add("hide");
     }
+}
+
+function randomTime() {
+    return mySeconds[Math.floor(Math.random()*mySeconds.length)];
 }
 
 
@@ -73,13 +72,14 @@ async function winCondition(house){
 }
 
 function hideBigMedal() {
-        document.querySelector("#medal_win").classList.add("hide");
-        document.querySelector("#medal_win").classList.remove("pulse");
-        document.querySelector("#medal_win").classList.remove("shrink");
+    document.querySelector("#medal_win").classList.add("hide");
+    document.querySelector("#medal_win").classList.remove("pulse");
+    document.querySelector("#medal_win").classList.remove("shrink");
 }
 
 async function initialState(){
     document.querySelector("#game").innerHTML =  await getSVG("main");
+
     document.querySelector("#medal_container").classList.remove("hide");
     document.querySelector("#music_on_off").classList.remove("hide");
     document.querySelector("#back").classList.add("hide");
@@ -88,13 +88,12 @@ async function initialState(){
     document.querySelector("#main_power").addEventListener("click", powerInit);
     document.querySelector("#main_light").addEventListener("click", lightInit);
     document.querySelector("#main_heat").addEventListener("click", heatInit);
-
     document.querySelector("#main_water_on").addEventListener("click", waterInit); //#water er husnavn svg
     document.querySelector("#main_power_on").addEventListener("click", powerInit);
     document.querySelector("#main_light_on").addEventListener("click", lightInit);
     document.querySelector("#main_heat_on").addEventListener("click", heatInit);
 
-document.querySelector("#snif").classList.remove("hide");
+    document.querySelector("#snif").classList.remove("hide");
 
     document.querySelector("#main_water_on").classList.add("levitate"); //#water er husnavn svg
     document.querySelector("#main_power_on").classList.add("levitate");
@@ -104,10 +103,10 @@ document.querySelector("#snif").classList.remove("hide");
     document.querySelector("#backgroundmusic").volume = 0.05;
     document.querySelector("#backgroundmusic").loop = true;
     document.querySelector("#backgroundmusic").play();
-    
     document.querySelector("#music_on_off").addEventListener("click", musicOff);
 
     document.querySelector("#back").addEventListener("click", initialState);
+
     game.complete.forEach(houseComplete);
 }
 
@@ -129,12 +128,14 @@ function musicOff() {
 function heheSound() {
     document.querySelector("#hehe").pause();
     document.querySelector("#hvad").pause();
-let randSound = Math.floor(Math.random()*2);
-if(randSound==0) {
-    document.querySelector("#hehe").play();
-} else if(randSound==1) {
-    document.querySelector("#hvad").play();
-}
+
+    let randSound = Math.floor(Math.random()*2);
+
+    if(randSound==0) {
+        document.querySelector("#hehe").play();
+    } else if(randSound==1) {
+        document.querySelector("#hvad").play();
+    }
 }
 
 function houseComplete(house){
@@ -154,11 +155,11 @@ async function displayEndScreen() {
     document.querySelector("#medal_container").classList.add("move_medals");
 
     window.setTimeout(restart, 15000)
-    }
+}
 
-    function restart() {
-        location.reload();
-    }
+function restart() {
+    location.reload();
+}
     
 
 

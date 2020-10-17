@@ -1,19 +1,18 @@
 "use strict";
 
 window.vacuum = {
-    element:"#power_vacuum_off",
     powerElement: "#power_vacuum_on",
+    element:"#power_vacuum_off",
     powerOn: true
 }
 
+
 window.modem = {
-    element:"#power_modem_off",
     powerElement: "#power_modem_on",
     powerOn: true
 }
 
 window.tv = {
-    element: "#power_off",
     powerElement:"#power_on",
     powerOn: true
 }
@@ -57,7 +56,6 @@ requestAnimationFrame(powerLoop);
 }
 
 function powerRenderModel(model){
-    console.log(model)
     if(model.powerOn){
         document.querySelector(model.powerElement).classList.remove("hide");
     } else{
@@ -71,16 +69,15 @@ function powerRenderModel(model){
 
 function powerHunter(model) {
     let elementTarget = document.querySelector(model.powerElement);
-    if(game.points<8) {
-    setTimeout(() => {
+
+    if(game.points < 8) {
+        setTimeout(() => {
         elementTarget.classList.remove("hide");
         heheSound();
-        if(model == vacuum) {
-addPowerAnimations();
-heheSound();
-        }
-    }, randomTime());
-}
+        addPowerAnimations();
+        
+        }, randomTime());
+    }
 }
 
 function addPowerAnimations() {

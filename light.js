@@ -25,7 +25,7 @@ const lightInputs = {
 async function lightInit(){
     document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
-    document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
+    document.querySelector("#game").innerHTML = await getSVG("light");
     document.querySelector("#hej").play();
     document.querySelector("#back").classList.remove("hide");
     lightEvents();
@@ -42,21 +42,15 @@ function lightEvents() {
 function lightLoop(){
     Object.keys(lightInputs).forEach(key =>{
 
-        if(lightInputs[key]){
-            window[key.split("Light")[0]].lightOn = !lightInputs[key];
-            lightInputs[key] = false;
-            game.points++
-            lightRenderModel(window[key.split("Light")[0]]);
-            winCondition("light");
-        }    
-    })
+    if(lightInputs[key]){
+        window[key.split("Light")[0]].lightOn = !lightInputs[key];
+        lightInputs[key] = false;
+        game.points++
+        lightRenderModel(window[key.split("Light")[0]]);
+        winCondition("light");
+    }    
+})
 requestAnimationFrame(lightLoop);
-}
-
-function addLightAnimations() {
-    document.querySelector("#lampLight").classList.add("glow");
-    document.querySelector("#floorLampLight").classList.add("glow");
-    document.querySelector("#tentLight").classList.add("glow");
 }
 
 function lightRenderModel(model){
@@ -67,16 +61,22 @@ function lightRenderModel(model){
         document.querySelector(model.lightElement).classList.remove("glow");
         lightHunter(model);
     }
-
 }
 
 function lightHunter(model) {
     let elementTarget = document.querySelector(model.lightElement);
-    if(game.points<8) {
-    setTimeout(() => {
+
+    if(game.points < 8) {
+        setTimeout(() => {
         elementTarget.classList.remove("hide");
         heheSound();
         addLightAnimations();
-    }, randomTime());
+        }, randomTime());
+    }
 }
+
+function addLightAnimations() {
+    document.querySelector("#lampLight").classList.add("glow");
+    document.querySelector("#floorLampLight").classList.add("glow");
+    document.querySelector("#tentLight").classList.add("glow");
 }
