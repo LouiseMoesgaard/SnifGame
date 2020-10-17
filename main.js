@@ -13,7 +13,7 @@ let game = {
     complete:[]
 }
 
-let mySeconds = [1000, 2500, 4000];
+let mySeconds = [1000, 2000, 3000];
 function randomTime() {
 return mySeconds[Math.floor(Math.random()*mySeconds.length)];
 }
