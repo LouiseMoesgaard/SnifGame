@@ -2,24 +2,21 @@
 "use strict";
 
 window.lamp = {
-    element:"#lamp",
     lightElement: "#lampLight",
     lightOn: true
 }
 
 window.floorLamp = {
-    element:"#floorLamp",
     lightElement: "#floorLampLight",
     lightOn: true
 }
 
 window.tent = {
-    element: "#tent",
     lightElement:"#tentLight",
     lightOn: true
 }
 
-const lighInputs = {
+const lightInputs = {
     lampLightClicked: false,
     floorLampLightClicked: false,
     tentLightClicked: false
@@ -37,9 +34,9 @@ async function lightInit(){
 }
 
 function lightEvents() {
-    document.querySelector(lamp.lightElement).addEventListener("click", ()=> lighInputs.lampLightClicked = true);
-    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> lighInputs.floorLampLightClicked = true);
-    document.querySelector(tent.lightElement).addEventListener("click", ()=> lighInputs.tentLightClicked = true);
+    document.querySelector(lamp.lightElement).addEventListener("click", ()=> lightInputs.lampLightClicked = true);
+    document.querySelector(floorLamp.lightElement).addEventListener("click", ()=> lightInputs.floorLampLightClicked = true);
+    document.querySelector(tent.lightElement).addEventListener("click", ()=> lightInputs.tentLightClicked = true);
 }
 
 function lightLoop(){
