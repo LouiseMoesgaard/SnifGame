@@ -1,5 +1,6 @@
 "use strict";
 
+//models for clickable items in the game
 window.fossett = {
     element: "#fossett",
     waterElement: "#fossettWater",
@@ -18,11 +19,13 @@ window.waterhose = {
     waterOn: true
 }
 
+//model for user inputs
 const waterInputs = {
     fossettWaterClicked: false,
     dishwasherWaterClicked: false,
     waterhoseWaterClicked: false
 }
+
 
 async function waterInit(){
     document.querySelector("#medal_container").classList.add("hide");
@@ -35,6 +38,7 @@ async function waterInit(){
     addWaterAnimations();
 }
 
+//user inputs enables clickevents
 function waterEvents() {
     document.querySelector(fossett.element).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
     document.querySelector(fossett.waterElement).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
@@ -45,7 +49,7 @@ function waterEvents() {
 function waterLoop(){
     Object.keys(waterInputs).forEach(key =>{
         if(waterInputs[key]){
-            window[key.split("Water")[0]].waterOn = !waterInputs[key];
+            window[key.split("Water")[0]].waterOn = !waterInputs[key]; //splits the key from the inputmodel to take the first part that corrisponds to the variable for model items.
             waterInputs[key] = false;
             game.points++
             waterRenderModel(window[key.split("Water")[0]]);

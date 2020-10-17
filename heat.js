@@ -1,5 +1,6 @@
 "use strict";
 
+//models for clickable items in the game
 window.radiatorLeft = {
     onElement:"#heat_radi_left_on",
     heatOn: true
@@ -15,6 +16,7 @@ window.heatFloor = {
     heatOn: false
 }
 
+//model for user inputs
 const heatInputs = {
     radiatorLeftClicked: false,
     radiatorRightClicked: false,
@@ -33,6 +35,7 @@ async function heatInit(){
     addHeatAnimations();
 }
 
+//user inputs enables clickevents
 function heatEvents() {
     document.querySelector(radiatorLeft.onElement).addEventListener("click", ()=> heatInputs.radiatorLeftClicked = true);
     document.querySelector(radiatorRight.onElement).addEventListener("click", ()=> heatInputs.radiatorRightClicked = true);
@@ -43,7 +46,7 @@ function heatLoop(){
     Object.keys(heatInputs).forEach(key =>{
 
         if(heatInputs[key]){
-            window[key.split("Clicked")[0]].heatOn = !heatInputs[key];
+            window[key.split("Clicked")[0]].heatOn = !heatInputs[key]; //splits the key from the inputmodel to take the first part that corrisponds to the variable for model items.
             heatInputs[key] = false;
             game.points++
             heatRenderModel(window[key.split("Clicked")[0]]);
