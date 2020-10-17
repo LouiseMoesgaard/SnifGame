@@ -29,8 +29,7 @@ async function powerInit(){
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("power"); //får det returnede SVG
     document.querySelector("#hej").play();
-    /*document.querySelector("#back").classList.remove("hide");
-    document.querySelector("#back").addEventListener("click", back);*/
+    document.querySelector("#back").classList.remove("hide");
     powerEvents();
     powerLoop();
     addPowerAnimations();
@@ -38,6 +37,7 @@ async function powerInit(){
 
 function powerEvents() {
     document.querySelector(vacuum.powerElement).addEventListener("click", ()=> powerInputs.vacuumPowerClicked = true);
+    document.querySelector(vacuum.element).addEventListener("click", ()=> powerInputs.vacuumPowerClicked = true);
     document.querySelector(modem.powerElement).addEventListener("click", ()=> powerInputs.modemPowerLightClicked = true);
     document.querySelector(tv.powerElement).addEventListener("click", ()=> powerInputs.tvPowerClicked = true);
 }
@@ -71,14 +71,16 @@ function powerRenderModel(model){
 
 function powerHunter(model) {
     let elementTarget = document.querySelector(model.powerElement);
+    if(game.points<8) {
     setTimeout(() => {
         elementTarget.classList.remove("hide");
-        document.querySelector("#hehe").play();
+        heheSound();
         if(model == vacuum) {
 addPowerAnimations();
-document.querySelector("#hehe").play();
+heheSound();
         }
-    }, 2000);
+    }, randomTime());
+}
 }
 
 function addPowerAnimations() {

@@ -29,8 +29,7 @@ async function waterInit(){
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("water");
     document.querySelector("#hej").play();
-    /*document.querySelector("#back").classList.remove("hide");
-    document.querySelector("#back").addEventListener("click", back);*/
+    document.querySelector("#back").classList.remove("hide");
     waterEvents();
     waterLoop();
     addWaterAnimations();
@@ -38,6 +37,7 @@ async function waterInit(){
 
 function waterEvents() {
     document.querySelector(fossett.element).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
+    document.querySelector(fossett.waterElement).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
     document.querySelector(dishwasher.element).addEventListener("click", ()=> waterInputs.dishwasherWaterClicked = true);
     document.querySelector(waterhose.element).addEventListener("click", ()=> waterInputs.waterhoseWaterClicked = true);
 }
@@ -76,16 +76,17 @@ function waterRenderModel(model){
 
 function waterHunter(model) {
     let elementTarget = document.querySelector(model.waterElement);
-
+if(game.points<8) {
     setTimeout(() => {
         elementTarget.classList.remove("hide");
-        document.querySelector("#hehe").play();
+        heheSound();
         if(model == dishwasher) {
             addWaterAnimations();
-            document.querySelector("#hehe").play();
+            heheSound();
         } else if (model == waterhose) {
             addWaterAnimations();
-            document.querySelector("#hehe").play();
+            heheSound();
         }
-    }, 2000);
+    }, randomTime());
+}
 }
