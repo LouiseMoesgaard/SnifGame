@@ -1,14 +1,5 @@
 "use strict";
 
-document.body.addEventListener('touchstart', function() {
-    var audios = [document.querySelector("#backgroundmusic")]
-    for(let audio of audios) {
-    audio.play()
-    audio.pause()
-    audio.currentTime = 0
-    }
-    audios=null;
-    }, false)
 window.onorientationchange = rotate;
 
 document.addEventListener("click", event =>{
