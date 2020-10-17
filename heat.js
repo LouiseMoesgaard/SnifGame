@@ -22,6 +22,8 @@ async function heatInit(){
 
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("heat"); //får det returnede SVG
+    document.querySelector("#hej").play();
+    document.querySelector("#back").classList.remove("hide");
     heatEvents();
     heatLoop();
 }
@@ -65,5 +67,6 @@ function heatHunter(model) {
     }
     setTimeout(() => {
         elementTarget.classList.remove("hide");
-    }, 1000);
+        heheSound();
+    }, randomTime());
 }

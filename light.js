@@ -29,6 +29,8 @@ async function lightInit(){
     document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("light"); //får det returnede SVG
+    document.querySelector("#hej").play();
+    document.querySelector("#back").classList.remove("hide");
     lightEvents();
     lightLoop();
     addLightAnimations();
@@ -73,8 +75,11 @@ function lightRenderModel(model){
 
 function lightHunter(model) {
     let elementTarget = document.querySelector(model.lightElement);
+    if(game.points<8) {
     setTimeout(() => {
         elementTarget.classList.remove("hide");
+        heheSound();
         addLightAnimations();
-    }, 1000);
+    }, randomTime());
+}
 }

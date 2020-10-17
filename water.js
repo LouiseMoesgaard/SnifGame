@@ -28,6 +28,8 @@ async function waterInit(){
     document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
     document.querySelector("#game").innerHTML = await getSVG("water");
+    document.querySelector("#hej").play();
+    document.querySelector("#back").classList.remove("hide");
     waterEvents();
     waterLoop();
     addWaterAnimations();
@@ -35,6 +37,7 @@ async function waterInit(){
 
 function waterEvents() {
     document.querySelector(fossett.element).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
+    document.querySelector(fossett.waterElement).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
     document.querySelector(dishwasher.element).addEventListener("click", ()=> waterInputs.dishwasherWaterClicked = true);
     document.querySelector(waterhose.element).addEventListener("click", ()=> waterInputs.waterhoseWaterClicked = true);
 }
@@ -73,13 +76,17 @@ function waterRenderModel(model){
 
 function waterHunter(model) {
     let elementTarget = document.querySelector(model.waterElement);
-
+if(game.points<8) {
     setTimeout(() => {
         elementTarget.classList.remove("hide");
+        heheSound();
         if(model == dishwasher) {
             addWaterAnimations();
+            heheSound();
         } else if (model == waterhose) {
             addWaterAnimations();
+            heheSound();
         }
-    }, 1000);
+    }, randomTime());
+}
 }
