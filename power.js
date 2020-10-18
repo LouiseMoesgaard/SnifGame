@@ -40,7 +40,6 @@ async function powerInit(){
 function powerEvents() {
     // eventlisteners for all objects
     document.querySelector(vacuum.powerElement).addEventListener("click", ()=> powerInputs.vacuumPowerClicked = true);
-    document.querySelector(vacuum.element).addEventListener("click", ()=> powerInputs.vacuumPowerClicked = true);
     document.querySelector(modem.powerElement).addEventListener("click", ()=> powerInputs.modemPowerLightClicked = true);
     document.querySelector(tv.powerElement).addEventListener("click", ()=> powerInputs.tvPowerClicked = true);
 }
@@ -67,6 +66,7 @@ function powerRenderModel(model){
         document.querySelector(model.powerElement).classList.add("hide");
         if(model == vacuum) {
             document.querySelector("#power_vacuum_off").classList.remove("shake");
+            document.querySelector("#power_vacuum_on").classList.remove("shake");
         }
     }
     powerHunter(model);
@@ -87,4 +87,5 @@ function powerHunter(model) {
 // animations
 function addPowerAnimations() {
     document.querySelector("#power_vacuum_off").classList.add("shake");
+    document.querySelector("#power_vacuum_on").classList.add("shake");
 }

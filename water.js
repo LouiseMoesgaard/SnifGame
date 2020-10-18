@@ -40,7 +40,6 @@ async function waterInit(){
 
 //user inputs enables clickevents
 function waterEvents() {
-    document.querySelector(fossett.element).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
     document.querySelector(fossett.waterElement).addEventListener("click", ()=> waterInputs.fossettWaterClicked = true);
     document.querySelector(dishwasher.element).addEventListener("click", ()=> waterInputs.dishwasherWaterClicked = true);
     document.querySelector(waterhose.element).addEventListener("click", ()=> waterInputs.waterhoseWaterClicked = true);
