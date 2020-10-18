@@ -59,8 +59,8 @@ function randomTime() {
 async function winCondition(house){
     if(game.points === game.maxPoints){
         game.medal++; 
-        game.complete.push(house); 
-        await initialState();
+        game.complete.push(house); //adds the complete house to an array
+        await initialState(); //Goes back to game-map
         document.querySelectorAll(".gray")[0].className = "full";
         document.querySelector("#medal_win").classList.remove("hide");
         document.querySelector("#medal_win").classList.add("pulse");
@@ -83,6 +83,7 @@ function hideBigMedal() {
 }
 
 async function initialState(){
+    //Swiches background to game-map
     document.querySelector("#game").innerHTML =  await getSVG("main");
 
     document.querySelector("#medal_container").classList.remove("hide");
@@ -100,7 +101,8 @@ async function initialState(){
 
     document.querySelector("#snif").classList.remove("hide");
 
-    document.querySelector("#main_water_on").classList.add("levitate"); //#water er husnavn svg
+    //Adds animations to houses
+    document.querySelector("#main_water_on").classList.add("levitate");
     document.querySelector("#main_power_on").classList.add("levitate");
     document.querySelector("#main_light_on").classList.add("levitate");
     document.querySelector("#main_heat_on").classList.add("levitate");
@@ -148,8 +150,10 @@ function heheSound() {
 }
 
 function houseComplete(house){
+    //Removes water/lightnings/heat/light around completed houses
     document.querySelector(`#main_${house}_on`).classList.add("hide");   
     
+    //Removes access to completed houses
     document.querySelector(`#main_${house}`).removeEventListener("click", window[`${house}Init`]);  
     document.querySelector(`#main_${house}_on`).removeEventListener("click", window[`${house}Init`]);
 }
@@ -166,6 +170,7 @@ async function displayEndScreen() {
     window.setTimeout(restart, 15000)
 }
 
+//Refreshes page for an easy reset of the game
 function restart() {
     location.reload();
 }
