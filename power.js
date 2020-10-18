@@ -1,5 +1,7 @@
 "use strict";
 
+// each object represents an item that the player can interact with
+// they each has a set of properties that are used later for the game loop
 window.vacuum = {
     powerElement: "#power_vacuum_on",
     element:"#power_vacuum_off",
@@ -17,16 +19,17 @@ window.tv = {
     powerOn: true
 }
 
+// this is the model and it is used later to check whether or not an element has been clicked
 const powerInputs = {
     vacuumPowerClicked: false,
     modemPowerClicked: false,
     tvPowerClicked: false
 }
-
+// in-game display is defined here with sounds and visuals
 async function powerInit(){
     document.querySelector("#medal_container").classList.add("hide");
     game.points = 0;
-    document.querySelector("#game").innerHTML = await getSVG("power"); //får det returnede SVG
+    document.querySelector("#game").innerHTML = await getSVG("power");
     document.querySelector("#hej").play();
     document.querySelector("#back").classList.remove("hide");
     powerEvents();
@@ -35,6 +38,7 @@ async function powerInit(){
 }
 
 function powerEvents() {
+    // eventlisteners for all objects
     document.querySelector(vacuum.powerElement).addEventListener("click", ()=> powerInputs.vacuumPowerClicked = true);
     document.querySelector(vacuum.element).addEventListener("click", ()=> powerInputs.vacuumPowerClicked = true);
     document.querySelector(modem.powerElement).addEventListener("click", ()=> powerInputs.modemPowerLightClicked = true);
@@ -42,6 +46,7 @@ function powerEvents() {
 }
 
 function powerLoop(){
+    //each object is called a key and gets split from the inputmodel to take the first part that corresponds to the variable for model items
     Object.keys(powerInputs).forEach(key =>{
 
         if(powerInputs[key]){
@@ -54,7 +59,7 @@ function powerLoop(){
     })
 requestAnimationFrame(powerLoop);
 }
-
+// it is checked whether an element is off or on and then does something in either case
 function powerRenderModel(model){
     if(model.powerOn){
         document.querySelector(model.powerElement).classList.remove("hide");
@@ -66,7 +71,7 @@ function powerRenderModel(model){
     }
     powerHunter(model);
 }
-
+// this function simulates the hunter turning something on again
 function powerHunter(model) {
     let elementTarget = document.querySelector(model.powerElement);
 
@@ -79,7 +84,7 @@ function powerHunter(model) {
         }, randomTime());
     }
 }
-
+// animations
 function addPowerAnimations() {
     document.querySelector("#power_vacuum_off").classList.add("shake");
 }
