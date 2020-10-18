@@ -1,6 +1,6 @@
 "use strict";
 
-window.onorientationchange = rotate;
+window.onresize = rotate;
 
 document.addEventListener("click", event =>{
     document.querySelector("#click").play();
@@ -26,6 +26,8 @@ async function getSVG(filename) {
 async function mainInit(){
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
+    rotate(); 
+
     document.querySelector("#play_button").classList.add("wiggle");
     document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate2"));
     document.querySelector("#medal_container").classList.add("hide");
@@ -39,7 +41,7 @@ async function mainInit(){
 }
 
 function rotate() {
-    if(window.innerWidth>window.innerHeight) {
+    if(window.innerWidth<window.innerHeight) {
         document.querySelector("#rotation").classList.remove("hide");
     } else {
         document.querySelector("#rotation").classList.add("hide");
@@ -100,14 +102,21 @@ async function initialState(){
     document.querySelector("#main_light_on").classList.add("levitate");
     document.querySelector("#main_heat_on").classList.add("levitate");
     
-    document.querySelector("#backgroundmusic").volume = 0.05;
-    document.querySelector("#backgroundmusic").loop = true;
-    document.querySelector("#backgroundmusic").play();
-    document.querySelector("#music_on_off").addEventListener("click", musicOff);
-
+    musicStart();
+    
     document.querySelector("#back").addEventListener("click", initialState);
 
     game.complete.forEach(houseComplete);
+}
+
+function musicStart() {
+    if(document.querySelector("#music_on_off").classList.contains("off")) {
+        document.querySelector("#backgroundmusic").pause();
+    } else {
+        document.querySelector("#backgroundmusic").loop = true;
+        document.querySelector("#backgroundmusic").play();
+        document.querySelector("#music_on_off").addEventListener("click", musicOff);
+    }
 }
 
 function musicOn() {
