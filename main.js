@@ -1,5 +1,6 @@
 "use strict";
 
+//Starts rotate function when device is rotated (onrotationchange is outdated, and screen is resized on rotation)
 window.onresize = rotate;
 
 document.addEventListener("click", event =>{
@@ -23,6 +24,7 @@ async function getSVG(filename) {
     return mySvgData; 
 }
 
+//Game startscreen
 async function mainInit(){
     document.querySelector("#game").innerHTML =  await getSVG("start_screen");
 
@@ -30,6 +32,7 @@ async function mainInit(){
 
     document.querySelector("#play_button").classList.add("wiggle");
     document.querySelectorAll("#icons g").forEach(icon => icon.classList.add("levitate2"));
+
     document.querySelector("#medal_container").classList.add("hide");
     document.querySelector("#music_on_off").classList.add("hide");
     document.querySelector("#back").classList.add("hide");
@@ -135,9 +138,6 @@ function musicOff() {
 }
 
 function heheSound() {
-    document.querySelector("#hehe").pause();
-    document.querySelector("#hvad").pause();
-
     let randSound = Math.floor(Math.random()*2);
 
     if(randSound==0) {
