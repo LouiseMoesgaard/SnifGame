@@ -58,26 +58,26 @@ body {
   position: absolute;
   bottom: 2px;
   left: 10px;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 #back {
-background-image: url(svgs/\ back.svg);
-background-size: cover;
-width: 10vw;
-height: 10vw;
-position: absolute;
-top: 2vw;
-left: 2vw;
+  background-image: url(svgs/\ back.svg);
+  background-size: cover;
+  width: 10vw;
+  height: 10vw;
+  position: absolute;
+  top: 2vw;
+  left: 2vw;
 }
 
 #music_on_off {
-background-image: url(svgs/music.svg);
-width: 7vw;
-height: 7vw;
-position: absolute;
-bottom: 40px;
-left: 1.5vw;
+  background-image: url(svgs/music.svg);
+  width: 7vw;
+  height: 7vw;
+  position: absolute;
+  bottom: 40px;
+  left: 1.5vw;
 }
 
 .off {
@@ -105,7 +105,7 @@ left: 1.5vw;
 .gray {
   height: 6vw;
   width: 6vw;
-  background-image: url(svgs/goldmedal-02.svg);
+  background-image: url(svgs/grey.svg);
   background-size: cover;
   background-position: 50% 50%;
   margin: 8px;
@@ -121,7 +121,7 @@ left: 1.5vw;
   left: 30vw;
 }
 
-#hunter {
+/* #hunter {
   width: 60vw;
   height: 27vw;
   background-image: url(svgs/hunter-02.svg);
@@ -129,4 +129,4 @@ left: 1.5vw;
   position: absolute;
   top: 36vh;
   left: 100vw;
-}
+} */
